@@ -1,4 +1,5 @@
 ---
+import Base from "@/layouts/Base.astro";
 import Posts from "@/layouts/Posts.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
@@ -15,10 +16,10 @@ export async function getStaticPaths() {
   });
 }
 
-const { category } = astro.params;
+const { category } = Astro.params;
 
-const posts = await getsinglepage("posts");
-const filterbycategory = taxonomyfilter(posts, "categories", category);
+const posts = await getSinglePage("posts");
+const filterByCategory = taxonomyFilter(posts, "categories", category);
 
 const title = humanize(category || "");
 ---
